@@ -24,6 +24,7 @@
     .panels {
       min-height:100vh;
       overflow: hidden;
+      display: flex;
     }
 
     .panel {
@@ -41,6 +42,12 @@
       font-size: 20px;
       background-size:cover;
       background-position:center;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      /* nesting flex boxes */
+      display: flex;
+      flex-direction: column;
     }
 
 
@@ -50,10 +57,32 @@
     .panel4 { background-image:url(https://source.unsplash.com/ITjiVXcwVng/1500x1500); }
     .panel5 { background-image:url(https://source.unsplash.com/3MNzGlQM7qs/1500x1500); }
 
+    /* Flex Children? */
     .panel > * {
       margin:0;
       width: 100%;
       transition:transform 0.5s;
+      border: 1px solid red;
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .panel > *:first-child {
+      transform: translateY(-100%);
+    }
+
+    .panel.open-active > *:first-child {
+      transform: translateY(0);
+    }
+
+    .panel > *:last-child {
+      transform: translateY(100%);
+    }
+
+    .panel.open-active > *:last-child {
+      transform: translateY(0);
     }
 
     .panel p {
@@ -68,6 +97,7 @@
 
     .panel.open {
       font-size:40px;
+      flex: 5;
     }
 
   </style>
@@ -102,6 +132,11 @@
   </div>
 
   <script>
+    const panels = document.querySelectorAll('.panels')
+
+    function toggleOpen () {
+      this.classList.toggle('open')
+    }
 
   </script>
 
