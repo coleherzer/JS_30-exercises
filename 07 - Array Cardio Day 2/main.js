@@ -59,6 +59,28 @@ console.log({matchedId})
 
 // Array.prototype.findIndex()
 // Find the comment with this ID
+
+const index = comments.findIndex((comment) => {
+    const specialId = 2039842
+    return comment.id === specialId
+})
+
+console.log({index})
+
 // delete the comment with the ID of 823423
 
+// one way
+// comments.splice(index, 1)
+// // start at the index from above and splice out just one
       
+// console.table(comments)
+
+// another way (popular in the redux world)
+const newComments = [
+    ...comments.slice(0, index),
+    ...comments.slice(index +1)
+]
+// have to use the spread operator so it doesnt come up as an array of objects
+// revisit the slice method (builds a new array)
+
+console.table(newComments)
