@@ -17,7 +17,27 @@ const comments = [
 ];
 
 // Some and Every Checks
+// .some checks if at least one thing in your array meets the criteria
+
 // Array.prototype.some() // is at least one person 19 or older?
+const isAdult = people.some((person) => {
+    const currentYear = (new Date()).getFullYear()
+    if (currentYear - person.year >= 19) {
+        return true
+    }
+})
+
+// another, simplier way to write it
+// const isAdult = people.some((person) => {
+//     const currentYear = (new Date()).getFullYear()
+//     return currentYear - person.year >= 19
+// })
+
+console.log({isAdult})
+// by surrounding it with curly brackets, it shows up as an object with a key that has a value of true, not just "true"
+// returns true because the condition is met
+
+
 // Array.prototype.every() // is everyone 19 or older?
 
 // Array.prototype.find()
