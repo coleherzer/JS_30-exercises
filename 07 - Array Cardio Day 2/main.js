@@ -37,12 +37,25 @@ console.log({isAdult})
 // by surrounding it with curly brackets, it shows up as an object with a key that has a value of true, not just "true"
 // returns true because the condition is met
 
-
 // Array.prototype.every() // is everyone 19 or older?
+const allAdults = people.every((person) => {
+    const currentYear = (new Date()).getFullYear()
+    return currentYear - person.year >= 19
+})
+
+console.log({allAdults})
+// returns false because not all adults are over 19
 
 // Array.prototype.find()
 // Find is like filter, but instead returns just the one you are looking for
 // find the comment with the ID of 823423
+
+const matchedId = comments.find((comment) => {
+    const searchId = 823423
+    return comment.id === searchId
+})
+
+console.log({matchedId})
 
 // Array.prototype.findIndex()
 // Find the comment with this ID
