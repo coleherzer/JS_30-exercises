@@ -11,6 +11,7 @@ ctx.strokeStyle = '#BADA55'
 ctx.lineJoin = 'round'
 ctx.lineCap = 'round'
 ctx.lineWidth = 30
+ctx.globalCompositeOperation = 'lighten'
 
 let isDrawing = false
 
