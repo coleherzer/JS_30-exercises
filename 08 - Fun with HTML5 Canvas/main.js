@@ -16,6 +16,8 @@ let isDrawing = false
 
 let lastX = 0
 let lastY = 0
+let hue = 0
+let direction = true
 
 function draw (evt) {
     if (!isDrawing) {
@@ -23,6 +25,7 @@ function draw (evt) {
         // will stop the function when they are not clicking down
     } else {
         console.log(evt)
+        ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`
         ctx.beginPath()
         // start from
         ctx.moveTo(lastX, lastY)
@@ -33,6 +36,23 @@ function draw (evt) {
         lastY = evt.offsetY
         // an ES6 trick to set both variables in one line (called array destructuring)
         // [lastX, lastY] = [evt.offsetX, evt.offsetY]
+
+        //increment hue to change color
+        hue++
+        if (hue >= 360) {
+            hue = 0
+        }
+
+        if (ctx.lineWidth >= 50 || ctx.lineWidth <= 1) {
+            direction = !direction
+        }
+        // increment line width up until the max (50)
+        if (direction) {
+            ctx.lineWidth++
+        } else {
+            // once the line width hits the max, it starts decreasing in size
+            ctx.lineWidth--
+        }
     }
 }
 
