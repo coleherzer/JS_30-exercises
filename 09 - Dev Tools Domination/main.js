@@ -23,13 +23,20 @@ console.log('hello, this is a %s string', 'YOOOOOO')
 console.log('%c I am some large text', 'font-size: 50px; background: blue')
 
 // warning!
-
+console.warn('OH NO, warning!!')
+// displays the text as a console warning
 
 // Error :|
+console.error('THERES AN ERROR')
+//shows text as a red error in console
 
 // Info
+console.info('Leopards can carry 2x their body weight into a tree')
+// just displays the text with a blue I icon next to it
+// didnt work?
 
 // Testing
+console.assert(1 === 2, 'Incorrect')
 
 // clearing
 
