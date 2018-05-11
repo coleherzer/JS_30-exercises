@@ -20,14 +20,44 @@ function togglePlay() {
 }
 
 function updateButton() {
+    // can use this because it is bound to the video
+    const icon = this.paused ? '►' : '❚ ❚'
+    toggle.textContent = icon
     console.log('updated the button')
+}
+
+function skip() {
+    console.log(this.dataset.skip)
+    // parseFloat simply converts the string (which is this.dataset.skip) into a true number
+    video.currentTime += parseFloat(this.dataset.skip)
+}
+
+function handleRangeUpdate() {
+    // update the property of video (either playbackrate or volume) to the value
+    video[this.name] = this.value
+    console.log(this.name)
+    console.log(this.value)
 }
 
 // Hook up event listeners
 video.addEventListener('click', togglePlay)
 video.addEventListener('play', updateButton)
+video.addEventListener('pause', updateButton)
+
 
 toggle.addEventListener('click', togglePlay)
+
+skipButtons.forEach((button) => {
+    button.addEventListener('click', skip)
+})
+
+ranges.forEach((range) => {
+    range.addEventListener('change', handleRangeUpdate)
+})
+// ranges.forEach((range) => {
+//     range.addEventListener('mousemove', handleRangeUpdate)
+// })
+
 
 
 
